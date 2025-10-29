@@ -124,7 +124,7 @@ public class RobloxUserClient
         if ((int) response.StatusCode >= 300)
         {
             throw new HttpRequestException(HttpRequestError.InvalidResponse,
-                $"Error sending to {url}: HTTP {(int) response.StatusCode} ({response.StatusCode})",
+                $"Error sending to {url}: HTTP {(int) response.StatusCode} ({response.StatusCode}) - {response.Content}",
                 statusCode: response.StatusCode);
         }
         

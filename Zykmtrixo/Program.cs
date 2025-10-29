@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Zykmtrixo.Diagnostic;
 using Zykmtrixo.State;
+using Zykmtrixo.Web.Server;
 
 namespace Zykmtrixo;
 
@@ -21,7 +22,7 @@ public class Program
         };
         
         // Run the server.
-        // TODO
+        await new WebServer().StartAsync();
         await Logger.WaitForCompletionAsync();
     }
 }

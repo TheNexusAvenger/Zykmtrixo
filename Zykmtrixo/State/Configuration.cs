@@ -39,7 +39,7 @@ public class PlaceConfigurationEntry
     /// <summary>
     /// List of place ids accepted.
     /// </summary>
-    public List<long> PlaceIds { get; set; } = new List<long>();
+    public List<long> PlaceIds { get; set; } = new List<long>() { 12345 };
 }
 
 public class RobloxConfiguration

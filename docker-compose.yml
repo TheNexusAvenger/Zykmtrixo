@@ -1,0 +1,17 @@
+services:
+  zykmtrixo:
+    container_name: Zykmtrixo
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    healthcheck:
+      test: ["CMD", "wget", "--content-on-error", "-qO-", "http://localhost:8000/health"]
+      interval: 2m
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    environment:
+    - CONFIGURATION_FILE_LOCATION=/configuration/configuration.json
+    volumes:
+      - ./configuration:/configuration

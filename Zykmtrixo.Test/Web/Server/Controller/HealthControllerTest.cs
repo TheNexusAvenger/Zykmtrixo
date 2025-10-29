@@ -6,7 +6,7 @@ using Zykmtrixo.Web.Client.Shim;
 using Zykmtrixo.Web.Server.Controller;
 using Zykmtrixo.Web.Server.Model.Response;
 
-namespace Zykmtrixo.Test.Web.Client.Controller;
+namespace Zykmtrixo.Test.Web.Server.Controller;
 
 public class HealthControllerTest
 {

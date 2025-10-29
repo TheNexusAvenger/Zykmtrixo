@@ -85,7 +85,7 @@ public class ConfigurationState
         // Invoke the changed event if the contents changed.
         if (this._lastConfiguration != null && this._lastConfiguration != configurationContents)
         {
-            Logger.Debug("Configuration updated.");
+            Logger.Info("Configuration updated.");
             ConfigurationChanged?.Invoke(this.CurrentConfiguration);
         }
         this._lastConfiguration = configurationContents;

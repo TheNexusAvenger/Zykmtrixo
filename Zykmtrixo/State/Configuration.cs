@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.Logging;
 
@@ -47,6 +48,16 @@ public class RobloxConfiguration
     /// Places controlled by the application.
     /// </summary>
     public List<PlaceConfigurationEntry> Places { get; set; } = new List<PlaceConfigurationEntry>() { new PlaceConfigurationEntry() };
+
+    /// <summary>
+    /// Returns the place configuration entry for a place id.
+    /// </summary>
+    /// <param name="placeId">Place id to fetch.</param>
+    /// <returns>The entry for the place id, if any exists.</returns>
+    public PlaceConfigurationEntry? GetEntryForPlaceId(long placeId)
+    {
+        return Places.FirstOrDefault(entry => entry.PlaceIds.Contains(placeId));
+    }
 }
 
 public class ServerConfiguration
@@ -68,6 +79,11 @@ public class Configuration
     /// Configuration for logging.
     /// </summary>
     public LoggingConfiguration Logging { get; set; } = new LoggingConfiguration();
+    
+    /// <summary>
+    /// Configuration for Roblox.
+    /// </summary>
+    public RobloxConfiguration Roblox { get; set; } = new RobloxConfiguration();
     
     /// <summary>
     /// Configuration for the server.

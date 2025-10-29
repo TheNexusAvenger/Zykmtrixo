@@ -41,7 +41,7 @@ Authorization: Bearer {{token}}
     "jobId": "00000000-0000-0000-0000-000000000000"
 }
 
-### Store log: success [401]
+### Store log: success [200]
 POST {{host}}/shutdown
 Authorization: Bearer {{token}}
 

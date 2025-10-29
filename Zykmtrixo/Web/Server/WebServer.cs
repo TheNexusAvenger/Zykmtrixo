@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using Zykmtrixo.Diagnostic;
+using Zykmtrixo.Extension;
 using Zykmtrixo.State;
 using Zykmtrixo.Web.Server.Controller;
 
@@ -47,6 +48,10 @@ public class WebServer
         {
             await (await healthController.HandleHealthCheck()).GetResponse().ExecuteAsync(httpContext);
         });
+
+        var shutdownController = new ShutdownController();
+        app.MapPostWithContext("/shutdown", async (context) =>
+            await shutdownController.HandleShutdownRequest(context));
         
         // Run the server.
         var port = configuration.Server.Port;

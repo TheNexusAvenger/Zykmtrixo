@@ -1,0 +1,51 @@
+﻿### Health check [200]
+GET {{host}}/health
+
+### Shutdown: unauthorized [401]
+POST {{host}}/shutdown
+Authorization: Bearer invalid
+
+{
+    "placeId": 12345,
+    "jobId": "00000000-0000-0000-0000-000000000000"
+}
+
+### Shutdown: malformed JSON [401]
+POST {{host}}/shutdown
+Authorization: Bearer {{token}}
+
+{
+
+### Store log: missing placeId [401]
+POST {{host}}/shutdown
+Authorization: Bearer {{token}}
+
+{
+    "jobId": "00000000-0000-0000-0000-000000000000"
+}
+
+### Store log: missing jobId [400]
+POST {{host}}/shutdown
+Authorization: Bearer {{token}}
+
+{
+    "placeId": 12345
+}
+
+### Store log: unconfigured placeId [401]
+POST {{host}}/shutdown
+Authorization: Bearer {{token}}
+
+{
+    "placeId": 23456,
+    "jobId": "00000000-0000-0000-0000-000000000000"
+}
+
+### Store log: success [401]
+POST {{host}}/shutdown
+Authorization: Bearer {{token}}
+
+{
+    "placeId": 12345,
+    "jobId": "00000000-0000-0000-0000-000000000000"
+}

@@ -53,7 +53,9 @@ public class ShutdownController
         var client = new RobloxUserClient(placeId);
         try
         {
+            Logger.Debug($"Requesting shutdown for place id {placeId} job id {request.JobId}.");
             await client.ShutDownAsync(request.JobId);
+            Logger.Info($"Requested shutdown for place id {placeId} job id {request.JobId}.");
             return new JsonResponse(new BasicResponse(ResponseStatus.Success), 200);
         }
         catch (HttpRequestException e)
